@@ -1,35 +1,143 @@
-<!-- res/layout/activity_meal_detail.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- activity_meal_detail.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".MealDetailActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewPlaceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Place:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewPlaceTitle"
+        android:layout_marginBottom="16dp" />
 
     <ImageView
-        android:id="@+id/detailImageView"
-        android:layout_width="200dp"
+        android:id="@+id/imageViewMeal"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_foreground" />
-
-    <TextView
-        android:id="@+id/detailMenuNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/detailImageView"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"
+        android:layout_below="@id/textViewPlace"
         android:layout_marginTop="16dp"
-        android:text="Menu Name" />
+        android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/detailDateTextView"
-        android:layout_width="match_parent"
+        android:id="@+id/textViewMenuNameTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detailMenuNameTextView"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp"
-        android:text="Date" />
-    <!-- 나머지 데이터 표시를 위한 뷰들을 추가 (필요한 만큼) -->
-</RelativeLayout>
+        android:layout_below="@id/imageViewMeal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Menu Name:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewMenuName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewMenuNameTitle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewRatingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewMenuName"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Rating:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewRatingTitle"
+        android:layout_marginBottom="16dp" />
+
+    <!-- ... Previous fields ... -->
+
+    <TextView
+        android:id="@+id/textViewTimeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewRating"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Time:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTimeTitle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewCostTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTime"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Cost:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCostTitle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewCaloriesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCost"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Calories:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCaloriesTitle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewTypeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCalories"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Type:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTypeTitle"
+        android:layout_marginBottom="16dp" />
+
+    <!-- ... Any additional fields ... -->
+
+</LinearLayout>
+</ScrollView>
