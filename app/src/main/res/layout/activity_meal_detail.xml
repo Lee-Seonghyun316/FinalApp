@@ -1,38 +1,41 @@
 <!-- activity_meal_detail.xml -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MealDetailActivity"
-    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageViewMeal"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/textViewPlace"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MealDetailActivity"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewPlaceTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="학식 장소"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageViewMeal"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/textViewPlace"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/textViewPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewPlaceTitle"
-        android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/textViewPlaceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="학식 장소"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewPlaceTitle"
+            android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/textViewMenuNameTitle"
@@ -40,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageViewMeal"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="메뉴명"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -50,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMenuNameTitle"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/textViewRatingTitle"
@@ -58,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMenuName"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="평가"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -68,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewRatingTitle"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
     <!-- ... Previous fields ... -->
 
@@ -78,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewRating"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="날짜"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -88,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewTimeTitle"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/textViewCostTitle"
@@ -96,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewTime"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="비용"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -106,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewCostTitle"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/textViewCaloriesTitle"
@@ -114,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewCost"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="칼로리"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -124,27 +127,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewCaloriesTitle"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
-    <TextView
-        android:id="@+id/textViewTypeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewCalories"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="유형(조식, 중식, 석식, 음료)"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textViewTypeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewCalories"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="유형(조식, 중식, 석식, 음료)"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewTypeTitle"
-        android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/textViewType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTypeTitle"
+            android:layout_marginBottom="16dp" />
 
-    <!-- ... Any additional fields ... -->
+        <!-- ... 추가 필드들 ... -->
 
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>
