@@ -1,36 +1,73 @@
 package com.example.finalapp;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+
+import com.example.finalapp.Meal;
+import com.example.finalapp.MealListAdapter;
 
 import java.util.ArrayList;
 
 public class MealCheckFragment extends Fragment {
 
+    private FrameLayout container;
+    private ToggleButton toggleButton;
     private ListView listView;
     private MealListAdapter mealListAdapter;
     private MealDatabaseHelper databaseHelper;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_meal_check, container, false);
-        listView = root.findViewById(R.id.listView);
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_meal_check, container, false);
+
+        this.container = view.findViewById(R.id.container);
+        toggleButton = view.findViewById(R.id.toggleButton);
 
         // MealDatabaseHelper 초기화
         databaseHelper = new MealDatabaseHelper(requireContext());
+
+        // 초기 화면 설정
+        showList();
+
+        // 토글 버튼 리스너 설정
+        toggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                showList();
+            } else {
+                showCalendar();
+            }
+        });
+
+        return view;
+    }
+
+
+    private void showList() {
+        // 리스트 레이아웃을 인플레이트하여 추가
+        container.removeAllViews(); // 기존의 뷰를 제거
+        View listLayout = getLayoutInflater().inflate(R.layout.list_layout, container, false);
+        container.addView(listLayout);
 
         // 데이터베이스에서 모든 식사 데이터 가져오기
         ArrayList<Meal> mealList = databaseHelper.getAllMeals();
 
         // 리스트뷰에 어댑터 설정
         mealListAdapter = new MealListAdapter(requireContext(), mealList);
+        ListView listView = listLayout.findViewById(R.id.listView);
         listView.setAdapter(mealListAdapter);
+    }
 
-        return root;
+
+    private void showCalendar() {
+        // 캘린더에 관련된 화면을 보여줄 로직 추가
+        // 여기에서는 특정 캘린더 뷰 또는 데이터를 초기화하는 작업을 수행할 수 있습니다.
     }
 }
