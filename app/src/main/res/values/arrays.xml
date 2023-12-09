@@ -1,0 +1,16 @@
+<resources>
+    <string-array name="place_array">
+        <item>상록원 2층</item>
+        <item>상록원 3층</item>
+        <item>기숙사</item>
+        <!-- 다른 장소 목록 추가 -->
+    </string-array>
+
+    <string-array name="type_array">
+        <item>조식</item>
+        <item>중식</item>
+        <item>석식</item>
+        <item>음료</item>
+        <!-- 다른 타입 목록 추가 -->
+    </string-array>
+</resources>

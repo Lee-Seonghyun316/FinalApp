@@ -54,20 +54,35 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
     // insertMeal 메서드 수정
     public long insertMeal(Meal meal) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_PLACE, meal.getPlace());
-        // 이미지를 byte 배열로 변환하여 저장
-        values.put(COLUMN_IMAGE_BLOB, meal.getImageBlob());
-        values.put(COLUMN_MENU_NAME, meal.getMenuName());
-        values.put(COLUMN_RATING, meal.getRating());
-        values.put(COLUMN_TIME, meal.getTime().getTime());  // Date를 long으로 저장
-        values.put(COLUMN_COST, meal.getCost());
-        values.put(COLUMN_CALORIES, meal.getCalories());
-        values.put(COLUMN_TYPE, meal.getType());
+        long rowId = -1;
 
-        long rowId = db.insert(TABLE_NAME, null, values);
-        db.endTransaction();
-        db.close();
+        try {
+            // 트랜잭션 시작
+            db.beginTransaction();
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_PLACE, meal.getPlace());
+            values.put(COLUMN_IMAGE_BLOB, meal.getImageBlob());
+            values.put(COLUMN_MENU_NAME, meal.getMenuName());
+            values.put(COLUMN_RATING, meal.getRating());
+            values.put(COLUMN_TIME, meal.getTime().getTime());
+            values.put(COLUMN_COST, meal.getCost());
+            values.put(COLUMN_CALORIES, meal.getCalories());
+            values.put(COLUMN_TYPE, meal.getType());
+
+            rowId = db.insert(TABLE_NAME, null, values);
+
+            // 트랜잭션 성공 시 커밋
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 트랜잭션 종료
+            db.endTransaction();
+            // 데이터베이스 연결 종료
+            db.close();
+        }
+
         return rowId;
     }
 
