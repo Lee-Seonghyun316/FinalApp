@@ -1,0 +1,7 @@
+<resources>
+    <!-- 기본 마진 값 -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 기타 마진 값 등을 필요에 따라 추가할 수 있습니다. -->
+</resources>
