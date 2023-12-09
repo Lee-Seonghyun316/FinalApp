@@ -45,7 +45,7 @@ public class MealDetailActivity extends AppCompatActivity {
             Meal meal = (Meal) intent.getSerializableExtra("meal");
 
             // 각 TextView에 데이터 설정
-            textViewPlace.setText("Place: " + meal.getPlace());
+            textViewPlace.setText("- " + meal.getPlace());
 
             // 이미지 설정
             byte[] imageBlob = meal.getImageBlob();
@@ -56,12 +56,12 @@ public class MealDetailActivity extends AppCompatActivity {
                 imageViewMeal.setImageResource(R.drawable.default_image);
             }
 
-            textViewMenuName.setText("Menu Name: " + meal.getMenuName());
-            textViewRating.setText("Rating: " + meal.getRating());
-            textViewTime.setText("Time: " + new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(meal.getTime()));
-            textViewCost.setText("Cost: " + meal.getCost());
-            textViewCalories.setText("Calories: " + meal.getCalories());
-            textViewType.setText("Type: " + meal.getType());
+            textViewMenuName.setText("- " + meal.getMenuName());
+            textViewRating.setText("- " + meal.getRating());
+            textViewTime.setText("- " + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(meal.getTime()));
+            textViewCost.setText("- " + meal.getCost() + "₩");
+            textViewCalories.setText("- " + meal.getCalories());
+            textViewType.setText("- " + meal.getType());
         }
     }
 }

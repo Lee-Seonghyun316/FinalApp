@@ -10,21 +10,6 @@
     tools:context=".MealDetailActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewPlaceTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Place:"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewPlaceTitle"
-        android:layout_marginBottom="16dp" />
-
     <ImageView
         android:id="@+id/imageViewMeal"
         android:layout_width="match_parent"
@@ -34,13 +19,30 @@
         android:scaleType="centerCrop" />
 
     <TextView
+        android:id="@+id/textViewPlaceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="학식 장소"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewPlaceTitle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
         android:id="@+id/textViewMenuNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageViewMeal"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Menu Name:"
+        android:text="메뉴명"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -57,7 +59,8 @@
         android:layout_below="@id/textViewMenuName"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Rating:"
+        android:text="평가"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -76,7 +79,8 @@
         android:layout_below="@id/textViewRating"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Time:"
+        android:text="날짜"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -93,7 +97,8 @@
         android:layout_below="@id/textViewTime"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Cost:"
+        android:text="비용"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -110,7 +115,8 @@
         android:layout_below="@id/textViewCost"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Calories:"
+        android:text="칼로리"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -127,7 +133,8 @@
         android:layout_below="@id/textViewCalories"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Type:"
+        android:text="유형(조식, 중식, 석식, 음료)"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
