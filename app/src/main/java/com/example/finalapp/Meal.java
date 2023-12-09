@@ -1,8 +1,9 @@
 package com.example.finalapp;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Meal {
+public class Meal implements Serializable {
     private String place;
     private byte[] imageBlob;
     private String menuName;

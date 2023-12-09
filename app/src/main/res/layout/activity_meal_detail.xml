@@ -1,0 +1,35 @@
+<!-- res/layout/activity_meal_detail.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/detailImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/detailMenuNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailImageView"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:text="Menu Name" />
+
+    <TextView
+        android:id="@+id/detailDateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailMenuNameTextView"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:text="Date" />
+    <!-- 나머지 데이터 표시를 위한 뷰들을 추가 (필요한 만큼) -->
+</RelativeLayout>

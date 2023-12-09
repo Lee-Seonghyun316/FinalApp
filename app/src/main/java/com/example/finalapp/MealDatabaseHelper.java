@@ -6,8 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class MealDatabaseHelper extends SQLiteOpenHelper {
 
@@ -86,10 +89,43 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
         return rowId;
     }
 
+    // MealDatabaseHelper.java
+
+// ...
+
     // 모든 식사 데이터 가져오기
-    public Cursor getAllMeals() {
+    public ArrayList<Meal> getAllMeals() {
+        ArrayList<Meal> mealList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
+                    String place = cursor.getString(cursor.getColumnIndex(COLUMN_PLACE));
+                    byte[] imageBlob = cursor.getBlob(cursor.getColumnIndex(COLUMN_IMAGE_BLOB));
+                    String menuName = cursor.getString(cursor.getColumnIndex(COLUMN_MENU_NAME));
+                    String rating = cursor.getString(cursor.getColumnIndex(COLUMN_RATING));
+                    long timeMillis = cursor.getLong(cursor.getColumnIndex(COLUMN_TIME));
+                    int cost = cursor.getInt(cursor.getColumnIndex(COLUMN_COST));
+                    int calories = cursor.getInt(cursor.getColumnIndex(COLUMN_CALORIES));
+                    String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
+
+                    Meal meal = new Meal(place, imageBlob, menuName, rating, new Date(timeMillis), cost, calories, type);
+                    mealList.add(meal);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 로그에 에러 메시지 출력
+            Log.e("getAllMeals", "Error retrieving meals", e);
+        } finally {
+            cursor.close();
+        }
+
+        return mealList;
     }
+
 }
 

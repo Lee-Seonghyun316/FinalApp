@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MealDetailActivity"
+            android:label="Meal Detail Activity">
+            <!-- 필요한 다른 설정들 추가 -->
+        </activity>
     </application>
 
 </manifest>
