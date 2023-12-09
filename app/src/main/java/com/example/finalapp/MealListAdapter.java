@@ -3,6 +3,7 @@ package com.example.finalapp;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,8 +42,14 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
         // 현재 위치의 Meal 객체 가져오기
         Meal meal = mealList.get(position);
 
-        // 이미지 설정 (byte[]에서 이미지로 변환하는 로직이 필요함)
-        // imageView.setImageBitmap(convertByteArrayToBitmap(meal.getImageBlob()));
+        // 이미지 설정
+        byte[] imageBlob = meal.getImageBlob();
+        if (imageBlob != null && imageBlob.length > 0) {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageBlob, 0, imageBlob.length));
+        } else {
+            // 이미지가 없는 경우 기본 이미지 설정
+            imageView.setImageResource(R.drawable.default_image);
+        }
 
         // 메뉴명 설정
         menuNameTextView.setText(meal.getMenuName());
