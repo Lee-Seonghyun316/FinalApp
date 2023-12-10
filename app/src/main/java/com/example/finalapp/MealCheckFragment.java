@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import com.example.finalapp.Meal;
 import com.example.finalapp.MealListAdapter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MealCheckFragment extends Fragment {
 
@@ -42,7 +45,7 @@ public class MealCheckFragment extends Fragment {
             if (isChecked) {
                 showList();
             } else {
-                showCalendar();
+                showNovemberMenu();
             }
         });
 
@@ -66,8 +69,42 @@ public class MealCheckFragment extends Fragment {
     }
 
 
-    private void showCalendar() {
-        // 캘린더에 관련된 화면을 보여줄 로직 추가
-        // 여기에서는 특정 캘린더 뷰 또는 데이터를 초기화하는 작업을 수행할 수 있습니다.
+    private void showNovemberMenu() {
+        container.removeAllViews(); // Remove existing views
+
+        // Inflate the November layout
+        View novemberLayout = getLayoutInflater().inflate(R.layout.november_layout, container, false);
+        container.addView(novemberLayout);
+
+        // Get and display November meals
+        ArrayList<Meal> novemberMeals = getNovemberMeals();
+        GridView gridView = novemberLayout.findViewById(R.id.gridView);
+        MealGridAdapter gridAdapter = new MealGridAdapter(requireContext(), novemberMeals);
+        gridView.setAdapter(gridAdapter);
+
+        // Display "11월" at the top
+        TextView monthTextView = novemberLayout.findViewById(R.id.monthTextView);
+        monthTextView.setText("11월");
     }
+
+    private ArrayList<Meal> getNovemberMeals() {
+        // 식단 데이터베이스에서 11월에 해당하는 데이터 가져오기
+        ArrayList<Meal> allMeals = databaseHelper.getAllMeals();
+        ArrayList<Meal> novemberMeals = new ArrayList<>();
+
+        // 현재 월과 11월을 비교하여 일치하는 데이터만 추출
+        Calendar calendar = Calendar.getInstance();
+        int currentMonth = calendar.get(Calendar.MONTH); // 현재 월 (0-based)
+        int november = Calendar.NOVEMBER; // 11월 (0-based)
+
+        for (Meal meal : allMeals) {
+            calendar.setTime(meal.getTime());
+            if (calendar.get(Calendar.MONTH) == november) {
+                novemberMeals.add(meal);
+            }
+        }
+
+        return novemberMeals;
+    }
+
 }

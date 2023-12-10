@@ -1,7 +1,9 @@
 package com.example.finalapp;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Meal implements Serializable {
     private String place;
@@ -77,6 +79,15 @@ public class Meal implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
+    // ... (이전 코드 생략)
+
+    public String getDate() {
+        // time 필드에서 날짜를 추출하여 원하는 형식으로 포맷팅
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return dateFormat.format(time).split("-")[1];
+    }
+
 
     public Meal(String place, byte[] imageBlob, String menuName, String rating, Date time, int cost, int calories, String type) {
         this.place = place;
