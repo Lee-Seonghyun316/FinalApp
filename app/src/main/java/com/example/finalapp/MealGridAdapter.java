@@ -10,6 +10,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MealGridAdapter extends BaseAdapter {
 
@@ -18,6 +20,15 @@ public class MealGridAdapter extends BaseAdapter {
 
     public MealGridAdapter(Context context, ArrayList<Meal> mealList) {
         this.context = context;
+
+        // mealList를 오래된 순으로 정렬
+        Collections.sort(mealList, new Comparator<Meal>() {
+            @Override
+            public int compare(Meal meal1, Meal meal2) {
+                return meal1.getDate().compareTo(meal2.getDate());
+            }
+        });
+
         this.mealList = mealList;
     }
 
