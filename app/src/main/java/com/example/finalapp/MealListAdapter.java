@@ -88,6 +88,8 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
 
         // 체크박스 설정
         CheckBox checkBox = rowView.findViewById(R.id.checkBox);
+        TextView caloriesTextView = rowView.findViewById(R.id.caloriesTextView);
+
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // 체크 상태가 변경되었을 때의 처리
             if (isChecked) {
@@ -102,14 +104,14 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
             // 합계를 TextView에 업데이트
             updateTotalCalories();
         });
-
+        caloriesTextView.setText(String.valueOf(meal.getCalories()) + "cal 합산");
         return rowView;
     }
 
     // 체크된 아이템들의 칼로리 합계를 업데이트하고 TextView에 표시
     private void updateTotalCalories() {
         TextView totalCaloriesTextView = ((Activity) context).findViewById(R.id.totalCaloriesTextView);
-        totalCaloriesTextView.setText("Total Calories: " + totalCalories);
+        totalCaloriesTextView.setText("총 칼로리: " + totalCalories + "cal");
     }
 
 

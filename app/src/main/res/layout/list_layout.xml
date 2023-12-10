@@ -20,7 +20,7 @@
         android:layout_alignParentBottom="true"
         android:background="#dddddd"
         android:padding="16dp"
-        android:text="Total Calories: 0"
+        android:text="총 칼로리: 0cal"
         android:textSize="18sp"
         android:textStyle="bold" />
 
