@@ -3,6 +3,7 @@ package com.example.finalapp;
 
 import android.content.Context;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -49,23 +50,19 @@ public class MealGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView textView;
-        if (convertView == null) {
-            // If convertView is null, inflate a new TextView
-            textView = new TextView(context);
-            textView.setLayoutParams(new GridView.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            textView.setGravity(Gravity.CENTER);
-            textView.setPadding(8, 8, 8, 8);
-        } else {
-            // If convertView is not null, reuse it
-            textView = (TextView) convertView;
+        View gridViewItem = convertView;
+
+        if (gridViewItem == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            gridViewItem = inflater.inflate(R.layout.november_layout, parent, false);
         }
 
-        // Set the text of the TextView to display meal information
+        // 여기에서 각 요소의 내용을 설정하세요
+        TextView itemText = gridViewItem.findViewById(R.id.textView);
         Meal meal = mealList.get(position);
-        textView.setText(meal.getDate() + "일" + "\n" + meal.getMenuName() + "\n" + meal.getCalories() + "cal");
+        itemText.setText(meal.getDate() + "일" + "\n" + meal.getMenuName() + "\n" + meal.getCalories() + "cal");
 
-        return textView;
+        return gridViewItem;
     }
+
 }

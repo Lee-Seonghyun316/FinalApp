@@ -1,28 +1,27 @@
-<!-- res/layout/november_layout.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/monthTextView"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
+        android:background="#80000000"
         android:padding="8dp"
-        android:text="November"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textColor="#ffffff"
+        android:layout_marginTop="25dp"
+        />
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:columnWidth="80dp"
         android:horizontalSpacing="8dp"
         android:numColumns="3"
         android:padding="8dp"
-        android:verticalSpacing="8dp" />
-</LinearLayout>
+        android:verticalSpacing="8dp"
+        android:layout_marginTop="50dp"
+        />
+
+</RelativeLayout>

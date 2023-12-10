@@ -83,7 +83,7 @@ public class MealCheckFragment extends Fragment {
         gridView.setAdapter(gridAdapter);
 
         // Display "11월" at the top
-        TextView monthTextView = novemberLayout.findViewById(R.id.monthTextView);
+        TextView monthTextView = novemberLayout.findViewById(R.id.textView);
         monthTextView.setText("11월");
     }
 
