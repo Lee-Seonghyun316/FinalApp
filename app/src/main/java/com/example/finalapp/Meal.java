@@ -86,7 +86,7 @@ public class Meal implements Serializable {
     public String getDate() {
         // time 필드에서 날짜를 추출하여 원하는 형식으로 포맷팅
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        return dateFormat.format(time).split("-")[1];
+        return dateFormat.format(time).split("-")[2];
     }
 
     public void setId(long id) {
