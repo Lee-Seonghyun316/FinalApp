@@ -162,6 +162,9 @@ public class MealInputFragment extends Fragment {
 
             if (rowId != -1) {
                 showToast("식사가 저장되었습니다. " + (rowId + 1) + "번째 식사");
+
+                // 입력란 초기화
+                clearInputFields();
             } else {
                 showToast("식사 저장에 실패했습니다.");
             }
@@ -172,6 +175,19 @@ public class MealInputFragment extends Fragment {
             // 로그에 에러 메시지 출력
             Log.e("MealInputFragment", "Error saving meal", e);
         }
+    }
+
+    private void clearInputFields() {
+        // 입력란 초기화
+        editTextFoodName.getText().clear();
+        editTextCost.getText().clear();
+        editTextCalories.getText().clear();
+        editTextEvaluationText.getText().clear();
+        ratingBar.setRating(0);
+        // 이미지뷰의 이미지 초기화
+        imageViewFood.setImageResource(0);
+        // 선택된 이미지 데이터 초기화
+        selectedImageBlob = null;
     }
 
     private Date getSelectedDate() {
