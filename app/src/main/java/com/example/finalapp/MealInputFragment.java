@@ -112,7 +112,10 @@ public class MealInputFragment extends Fragment {
     }
 
     private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        startActivityForResult(intent, REQUEST_IMAGE_PICK);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*"); // 이미지 파일만 선택 가능하도록 MIME 타입 설정
         startActivityForResult(intent, REQUEST_IMAGE_PICK);
     }
 

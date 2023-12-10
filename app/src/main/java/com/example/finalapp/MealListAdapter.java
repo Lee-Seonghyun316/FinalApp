@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 public class MealListAdapter extends ArrayAdapter<Meal> {
@@ -31,6 +32,8 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
     public MealListAdapter(Context context, ArrayList<Meal> mealList) {
         super(context, R.layout.meal_list_item, mealList);
         this.context = context;
+        // mealList를 역순으로 정렬
+        Collections.reverse(mealList);
         this.mealList = mealList;
     }
 
