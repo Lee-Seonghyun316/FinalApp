@@ -45,11 +45,11 @@ public class MealAnalysisFragment extends Fragment {
 
         // Calculate total calories
         int totalCalories = calculateTotalCalories(mealsLastMonth);
-        totalCaloriesTextView.setText("<최근 1달 간의 식사에 대한 칼로리 총량>" + "\n" + totalCalories + "cal");
+        totalCaloriesTextView.setText("최근 1달 간의 식사에 대한 칼로리 총량" + "\n\n" + totalCalories + "cal");
 
         // Analyze cost by type
         String costAnalysis = analyzeCostByType(mealsLastMonth);
-        costAnalysisTextView.setText("<최근 1달 간의 식사 비용을 종류별로 분석>" + costAnalysis);
+        costAnalysisTextView.setText("최근 1달 간의 식사 비용을 종류별로 분석\n" + costAnalysis);
     }
 
     private int calculateTotalCalories(ArrayList<Meal> meals) {
