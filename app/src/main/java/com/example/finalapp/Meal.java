@@ -79,6 +79,7 @@ public class Meal implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+    private long id;
 
     // ... (이전 코드 생략)
 
@@ -86,6 +87,10 @@ public class Meal implements Serializable {
         // time 필드에서 날짜를 추출하여 원하는 형식으로 포맷팅
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return dateFormat.format(time).split("-")[1];
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 

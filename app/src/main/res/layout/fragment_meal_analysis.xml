@@ -1,10 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/fragment_meal_analysis.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- 식사 분석과 관련된 UI 구성 요소들을 추가 -->
+    <TextView
+        android:id="@+id/totalCaloriesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/costAnalysisTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 </LinearLayout>

@@ -26,6 +26,7 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_COST = "cost";
     private static final String COLUMN_CALORIES = "calories";
     private static final String COLUMN_TYPE = "type";
+    private long id;
 
     private static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
@@ -126,6 +127,171 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
 
         return mealList;
     }
+
+    // ...
+
+    public int getTotalCaloriesForLastMonth() {
+        int totalCalories = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Calculate the date one month ago from the current date
+        long oneMonthAgoMillis = System.currentTimeMillis() - (30L * 24 * 60 * 60 * 1000);
+
+        // Define the columns you want to retrieve
+        String[] columns = {COLUMN_CALORIES};
+
+        // Specify the selection criteria
+        String selection = COLUMN_TIME + " >= ?";
+        String[] selectionArgs = {String.valueOf(oneMonthAgoMillis)};
+
+        // Query the database
+        Cursor cursor = db.query(
+                TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        // Process the cursor and calculate total calories
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int calories = cursor.getInt(cursor.getColumnIndex(COLUMN_CALORIES));
+                totalCalories += calories;
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        // Close the database connection
+        db.close();
+
+        return totalCalories;
+    }
+
+    public ArrayList<MealTypeAnalysis> getCostAnalysisForLastMonth() {
+        ArrayList<MealTypeAnalysis> analysisList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Calculate the date one month ago from the current date
+        long oneMonthAgoMillis = System.currentTimeMillis() - (30L * 24 * 60 * 60 * 1000);
+
+        // Define the columns you want to retrieve
+        String[] columns = {COLUMN_COST, COLUMN_TYPE};
+
+        // Specify the selection criteria
+        String selection = COLUMN_TIME + " >= ?";
+        String[] selectionArgs = {String.valueOf(oneMonthAgoMillis)};
+
+        // Query the database
+        Cursor cursor = db.query(
+                TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        // Process the cursor and populate the analysisList
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int cost = cursor.getInt(cursor.getColumnIndex(COLUMN_COST));
+                String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
+
+                // Update the corresponding analysis or create a new one
+                MealTypeAnalysis analysis = findAnalysisByType(analysisList, type);
+                if (analysis != null) {
+                    analysis.addToTotalCost(cost);
+                } else {
+                    analysisList.add(new MealTypeAnalysis(type, cost));
+                }
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        // Close the database connection
+        db.close();
+
+        return analysisList;
+    }
+
+    private MealTypeAnalysis findAnalysisByType(ArrayList<MealTypeAnalysis> analysisList, String type) {
+        for (MealTypeAnalysis analysis : analysisList) {
+            if (analysis.getType().equals(type)) {
+                return analysis;
+            }
+        }
+        return null;
+    }
+    // ...
+
+    public ArrayList<Meal> getMealsSinceDate(Date startDate) {
+        ArrayList<Meal> mealList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Define the columns you want to retrieve
+        String[] columns = {
+                COLUMN_ID,
+                COLUMN_PLACE,
+                COLUMN_IMAGE_BLOB,
+                COLUMN_MENU_NAME,
+                COLUMN_RATING,
+                COLUMN_TIME,
+                COLUMN_COST,
+                COLUMN_CALORIES,
+                COLUMN_TYPE
+        };
+
+        // Specify the selection criteria
+        String selection = COLUMN_TIME + " >= ?";
+        String[] selectionArgs = {String.valueOf(startDate.getTime())};
+
+        // Query the database
+        Cursor cursor = db.query(
+                TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        // Process the cursor and populate the mealList
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
+                String place = cursor.getString(cursor.getColumnIndex(COLUMN_PLACE));
+                byte[] imageBlob = cursor.getBlob(cursor.getColumnIndex(COLUMN_IMAGE_BLOB));
+                String menuName = cursor.getString(cursor.getColumnIndex(COLUMN_MENU_NAME));
+                String rating = cursor.getString(cursor.getColumnIndex(COLUMN_RATING));
+                long timeMillis = cursor.getLong(cursor.getColumnIndex(COLUMN_TIME));
+                int cost = cursor.getInt(cursor.getColumnIndex(COLUMN_COST));
+                int calories = cursor.getInt(cursor.getColumnIndex(COLUMN_CALORIES));
+                String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
+
+                Meal meal = new Meal(place, imageBlob, menuName, rating, new Date(timeMillis), cost, calories, type);
+                meal.setId(id);
+                mealList.add(meal);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        // Close the database connection
+        db.close();
+
+        return mealList;
+    }
+
+
+// ...
+
+
+// ...
+
 
 }
 
